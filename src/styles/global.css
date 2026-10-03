@@ -1,4 +1,5 @@
 /* Asim's Lab — mobile-first dark tinkerer theme, Bengali-first */
+@import './fonts.css';
 
 :root {
   --bg: #0b0f14;
