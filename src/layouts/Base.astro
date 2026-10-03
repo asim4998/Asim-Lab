@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'ফোন ঘাঁটাঘাঁটির নোটবুক — বাংলায় Android টিংকারিং' } = Astro.props;
+const current = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — Asim's Lab</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/"><span class="prompt">~/</span>asim-lab</a>
+        <nav class="nav" aria-label="প্রধান মেনু">
+          <a href="/" class={current === '/' ? 'active' : ''}>হোম</a>
+          <a href="/blog" class={current.startsWith('/blog') ? 'active' : ''}>ব্লগ</a>
+          <a href="/about" class={current === '/about' ? 'active' : ''}>পরিচিতি</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>~/asim-lab — ফোন ঘাঁটাঘাঁটির নোটবুক</span>
+        <span>built with astro · ২০২৬</span>
+      </div>
+    </footer>
+  </body>
+</html>

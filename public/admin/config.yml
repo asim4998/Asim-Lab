@@ -1,0 +1,30 @@
+# Decap CMS কনফিগ — Asim's Lab
+# ডিপ্লয়ের সময় নিচের repo: নিজের GitHub রিপো দিয়ে বদলে দাও।
+# GitHub backend-এর জন্য OAuth দরকার (Netlify Identity বা নিজের OAuth সার্ভার)।
+
+backend:
+  name: github
+  repo: asim4998/Asim-Lab # <-- বদলাও: তোমার-ইউজারনেম/asim-lab
+  branch: main
+
+# editorial_workflow বন্ধ — Publish চাপলেই সরাসরি main-এ যাবে।
+publish_mode: simple
+editorial_workflow: false
+
+media_folder: 'public/images/uploads'
+public_folder: '/images/uploads'
+
+collections:
+  - name: 'blog'
+    label: 'ব্লগ পোস্ট'
+    folder: 'src/content/blog'
+    create: true
+    slug: '{{slug}}'
+    extension: 'md'
+    format: 'frontmatter'
+    fields:
+      - { label: 'শিরোনাম', name: 'title', widget: 'string' }
+      - { label: 'সংক্ষিপ্ত বর্ণনা', name: 'description', widget: 'text', required: false }
+      - { label: 'তারিখ', name: 'pubDate', widget: 'datetime', format: 'YYYY-MM-DD' }
+      - { label: 'ট্যাগ', name: 'tags', widget: 'list', required: false }
+      - { label: 'লেখা', name: 'body', widget: 'markdown' }
