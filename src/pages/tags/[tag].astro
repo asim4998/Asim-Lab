@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = new Set(posts.flatMap((p) => p.data.tags ?? []));
+  return [...tags].map((tag) => ({ params: { tag }, props: { tag } }));
+}
+
+const { tag } = Astro.props;
+const posts = (await getCollection('blog'))
+  .filter((p) => (p.data.tags ?? []).includes(tag))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={`ট্যাগ: ${tag}`} description={`#${tag} ট্যাগের সব পোস্ট`}>
+  <div class="wrap">
+    <section class="hero" style="padding-bottom:0.5rem">
+      <p class="kicker">$ grep #{tag}</p>
+      <h1>#{tag}</h1>
+      <p class="tagline">{posts.length}টা পোস্ট</p>
+    </section>
+
+    <ul class="post-list">
+      {posts.map((p) => (
+        <li class="post-card reveal">
+          <a class="title" href={`/blog/${p.id.replace(/\.md$/, '')}`}>{p.data.title}</a>
+          {p.data.description && <p class="desc">{p.data.description}</p>}
+          <div class="meta"><span>{fmt(p.data.pubDate)}</span></div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>

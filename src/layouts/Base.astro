@@ -86,13 +86,16 @@ const current = Astro.url.pathname;
     })} />
   </head>
   <body>
+    <div class="read-progress" aria-hidden="true"><div class="bar"></div></div>
     <header class="site-header">
       <div class="wrap">
         <a class="brand" href="/"><span class="prompt">~/</span>asim-lab</a>
         <nav class="nav" aria-label="প্রধান মেনু">
           <a href="/" class={current === '/' ? 'active' : ''}>হোম</a>
           <a href="/blog" class={current.startsWith('/blog') ? 'active' : ''}>ব্লগ</a>
+          <a href="/tags" class={current.startsWith('/tags') ? 'active' : ''}>ট্যাগ</a>
           <a href="/about" class={current === '/about' ? 'active' : ''}>পরিচিতি</a>
+          <a href="/search" class={current === '/search' ? 'active' : ''} aria-label="সার্চ">🔍</a>
         </nav>
       </div>
     </header>
@@ -104,8 +107,35 @@ const current = Astro.url.pathname;
     <footer class="site-footer">
       <div class="wrap">
         <span>~/asim-lab — ফোন ঘাঁটাঘাঁটির নোটবুক</span>
-        <span>built with astro · ২০২৬</span>
+        <nav aria-label="ফুটার">
+          <a href="/search">সার্চ</a>
+          <a href="/tags">ট্যাগ</a>
+          <a href="/rss.xml">RSS</a>
+          <a href="/privacy">প্রাইভেসি</a>
+        </nav>
       </div>
     </footer>
+
+    <button class="to-top" id="toTop" aria-label="উপরে যাও">↑</button>
+
+    <script>
+      // reading progress + back-to-top + scroll reveal (tiny, no framework)
+      const bar = document.querySelector('.read-progress .bar');
+      const toTop = document.getElementById('toTop');
+      const onScroll = () => {
+        const h = document.documentElement;
+        const p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+        if (bar) bar.style.transform = `scaleX(${p})`;
+        if (toTop) toTop.classList.toggle('show', h.scrollTop > 600);
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      toTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      const io = new IntersectionObserver((es) => {
+        es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
   </body>
 </html>

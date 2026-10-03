@@ -5,40 +5,55 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const latest = posts.slice(0, 3);
+const latest = posts.slice(0, 5);
+const tagCount = new Set(posts.flatMap((p) => p.data.tags ?? [])).size;
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const reading = (body: string) => {
+  const words = body.split(/\s+/).length;
+  const min = Math.max(1, Math.round(words / 200));
+  return `${min} মিনিট`;
+};
 ---
 
 <Base title="হোম" description="Asim's Lab — বাংলায় Android ফোন ঘাঁটাঘাঁটির নোটবুক">
   <div class="wrap">
     <section class="hero">
-      <p class="kicker">$ whoami</p>
+      <p class="kicker">$ whoami<span class="cursor"></span></p>
       <h1>Asim's Lab 🧪</h1>
       <p class="tagline">
         ফোন ঘাঁটাঘাঁটির নোটবুক — Shizuku, ডিব্লোটিং, প্রক্সি আর
-        Android টিংকারিং নিয়ে আমার হাতেকলমে শেখা সবকিছু, বাংলায়।
+        Android টিংকারিং নিয়ে হাতেকলমে শেখা সবকিছু, বাংলায়।
       </p>
+      <div class="hero-stats">
+        <div class="stat"><b>{posts.length}</b><span>পোস্ট</span></div>
+        <div class="stat"><b>{tagCount}</b><span>টপিক</span></div>
+        <div class="stat"><b>১০/দিন</b><span>নতুন লেখা</span></div>
+      </div>
       <a class="btn" href="/blog">পোস্ট পড়ো</a>
-      <a class="btn ghost" href="/about">আমি কে?</a>
+      <a class="btn ghost" href="/search">🔍 সার্চ করো</a>
     </section>
 
     <h2 class="section-title">সাম্প্রতিক পোস্ট</h2>
     <ul class="post-list">
       {latest.map((p) => (
-        <li class="post-card">
+        <li class="post-card reveal">
           <a class="title" href={`/blog/${p.id.replace(/\.md$/, '')}`}>{p.data.title}</a>
           {p.data.description && <p class="desc">{p.data.description}</p>}
           <div class="meta">
             <span>{fmt(p.data.pubDate)}</span>
-            {p.data.tags.map((t) => <span class="tag">#{t}</span>)}
+            <span class="reading">📖 {reading(p.body)}</span>
+            {(p.data.tags ?? []).slice(0, 3).map((t) => (
+              <a class="tag" href={`/tags/${t}`}>#{t}</a>
+            ))}
           </div>
         </li>
       ))}
     </ul>
 
-    <section class="about-teaser">
+    <section class="about-teaser reveal">
       <h2>এই ল্যাবটা কী? 🔬</h2>
       <p>
         PC ছাড়া শুধু ফোন দিয়েই আমি Android-এর গভীরে ঢুকি — সিস্টেম ডিবাগিং,

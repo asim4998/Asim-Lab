@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const counts = new Map();
+for (const p of posts) {
+  for (const t of p.data.tags ?? []) counts.set(t, (counts.get(t) ?? 0) + 1);
+}
+const tags = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+---
+
+<Base title="ট্যাগ" description="টপিক ধরে Asim's Lab-এর পোস্ট খোঁজো">
+  <div class="wrap">
+    <section class="hero" style="padding-bottom:0.5rem">
+      <p class="kicker">$ ls --tags</p>
+      <h1>ট্যাগ 🏷️</h1>
+      <p class="tagline">টপিক ধরে পোস্ট খোঁজো।</p>
+    </section>
+
+    <div class="tag-cloud">
+      {tags.map(([t, n]) => (
+        <a href={`/tags/${t}`}>#{t} <span class="count">{n}</span></a>
+      ))}
+    </div>
+  </div>
+</Base>

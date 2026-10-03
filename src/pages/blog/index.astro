@@ -8,6 +8,9 @@ const posts = (await getCollection('blog')).sort(
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const reading = (body: string) =>
+  `${Math.max(1, Math.round(body.split(/\s+/).length / 200))} মিনিট`;
 ---
 
 <Base title="ব্লগ" description="Asim's Lab-এর সব পোস্ট — Android টিংকারিং নোট">
@@ -20,12 +23,15 @@ const fmt = (d: Date) =>
 
     <ul class="post-list">
       {posts.map((p) => (
-        <li class="post-card">
+        <li class="post-card reveal">
           <a class="title" href={`/blog/${p.id.replace(/\.md$/, '')}`}>{p.data.title}</a>
           {p.data.description && <p class="desc">{p.data.description}</p>}
           <div class="meta">
             <span>{fmt(p.data.pubDate)}</span>
-            {p.data.tags.map((t) => <span class="tag">#{t}</span>)}
+            <span class="reading">📖 {reading(p.body)}</span>
+            {(p.data.tags ?? []).slice(0, 3).map((t) => (
+              <a class="tag" href={`/tags/${t}`}>#{t}</a>
+            ))}
           </div>
         </li>
       ))}
