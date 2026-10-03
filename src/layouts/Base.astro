@@ -73,7 +73,10 @@ const current = Astro.url.pathname;
     <link rel="preload" href="/fonts/hind-siliguri-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/hind-siliguri-700-bengali.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/hind-siliguri-400-bengali.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#070b12" />
 
     <!-- Structured data: WebSite -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -83,13 +86,19 @@ const current = Astro.url.pathname;
       url: site,
       inLanguage: 'bn',
       description: 'ফোন ঘাঁটাঘাঁটির নোটবুক — বাংলায় Android টিংকারিং',
+      publisher: {
+        '@type': 'Organization',
+        name: "Asim's Lab",
+        url: site,
+        logo: `${site}/logo.svg`,
+      },
     })} />
   </head>
   <body>
     <div class="read-progress" aria-hidden="true"><div class="bar"></div></div>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/"><span class="prompt">~/</span>asim-lab</a>
+        <a class="brand" href="/"><img src="/logo.svg" alt="Asim's Lab লোগো" width="28" height="28" style="vertical-align:-6px;margin-right:6px" /><span class="prompt">~/</span>asim-lab</a>
         <nav class="nav" aria-label="প্রধান মেনু">
           <a href="/" class={current === '/' ? 'active' : ''}>হোম</a>
           <a href="/blog" class={current.startsWith('/blog') ? 'active' : ''}>ব্লগ</a>
@@ -111,7 +120,10 @@ const current = Astro.url.pathname;
           <a href="/search">সার্চ</a>
           <a href="/tags">ট্যাগ</a>
           <a href="/rss.xml">RSS</a>
+          <a href="/about">পরিচিতি</a>
+          <a href="/contact">যোগাযোগ</a>
           <a href="/privacy">প্রাইভেসি</a>
+          <a href="/terms">শর্তাবলী</a>
         </nav>
       </div>
     </footer>
