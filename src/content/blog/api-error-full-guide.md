@@ -2,6 +2,7 @@
 title: 'API Error? ঘাবড়িও না — 401, 403, 429, 503-এর সম্পূর্ণ সমাধান গাইড'
 description: 'API key কাজ করছে না? 401 Unauthorized, 429 Too Many Requests, 503 error-এর মানে ও ধাপে ধাপে সমাধান — এই এক পোস্ট পড়লেই আর কোথাও যেতে হবে না।'
 pubDate: 2026-10-03T09:15:00+06:00
+image: /images/api-401-error.webp
 tags: ['api', 'debugging', 'gemini', 'tutorial']
 ---
 
