@@ -98,7 +98,7 @@ const current = Astro.url.pathname;
     <div class="read-progress" aria-hidden="true"><div class="bar"></div></div>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/"><img src="/logo.svg" alt="Asim's Lab লোগো" width="28" height="28" style="vertical-align:-6px;margin-right:6px" /><span class="prompt">~/</span>asim-lab</a>
+        <a class="brand" href="/"><img src="/logo.svg" alt="Asim's Lab লোগো" width="28" height="28" />asim-lab</a>
         <nav class="nav" aria-label="প্রধান মেনু">
           <a href="/" class={current === '/' ? 'active' : ''}>হোম</a>
           <a href="/blog" class={current.startsWith('/blog') ? 'active' : ''}>ব্লগ</a>

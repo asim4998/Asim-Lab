@@ -40,8 +40,8 @@ import Base from '../layouts/Base.astro';
       results.innerHTML = hits.map((p) => `
         <li class="post-card has-thumb">
           ${p.image
-            ? `<a href="/blog/${p.slug}" tabindex="-1" aria-hidden="true"><img class="thumb" src="${p.image}" alt="" loading="lazy" decoding="async" /></a>`
-            : `<div class="thumb-fallback" aria-hidden="true"><span>🧪</span></div>`}
+            ? `<a class="thumb-wrap" href="/blog/${p.slug}" tabindex="-1" aria-hidden="true"><img src="${p.image}" alt="" loading="lazy" decoding="async" /></a>`
+            : `<div class="thumb-wrap" aria-hidden="true"><span class="fallback-emoji">🧪</span></div>`}
           <div class="card-body">
             <a class="title" href="/blog/${p.slug}">${p.title}</a>
             ${p.description ? `<p class="desc">${p.description}</p>` : ''}
