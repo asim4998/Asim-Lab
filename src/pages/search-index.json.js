@@ -9,6 +9,7 @@ export async function GET() {
     title: p.data.title,
     description: p.data.description ?? '',
     tags: p.data.tags ?? [],
+    image: p.data.image ?? '',
     // first 600 chars of plain text for searching
     text: p.body.replace(/[#*`>\-[\]()!]/g, ' ').slice(0, 600),
   }));

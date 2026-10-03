@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -85,10 +86,14 @@ const blogPosting = {
           <h2 class="section-title">আরও পড়ো</h2>
           <ul class="post-list">
             {related.map((p) => (
-              <li class="post-card reveal">
-                <a class="title" href={`/blog/${p.id.replace(/\.md$/, '')}`}>{p.data.title}</a>
-                {p.data.description && <p class="desc">{p.data.description}</p>}
-              </li>
+              <PostCard
+                slug={p.id.replace(/\.md$/, '')}
+                title={p.data.title}
+                description={p.data.description}
+                date={fmt(p.data.pubDate)}
+                tags={p.data.tags ?? []}
+                image={p.data.image}
+              />
             ))}
           </ul>
         </section>
