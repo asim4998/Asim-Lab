@@ -16,6 +16,12 @@ const fmt = (d: Date) =>
 
 const site = 'https://asim-lab.vercel.app';
 const url = `${site}/blog/${slug}`;
+
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter((p) => p.id !== post.id && (p.data.tags ?? []).some((t) => (post.data.tags ?? []).includes(t)))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 const blogPosting = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -52,6 +58,19 @@ const blogPosting = {
       <div class="prose">
         <Content />
       </div>
+      {related.length > 0 && (
+        <section class="related">
+          <h2>আরও পড়ো 📚</h2>
+          <ul class="post-list">
+            {related.map((p) => (
+              <li class="post-card">
+                <a class="title" href={`/blog/${p.id.replace(/\.md$/, '')}`}>{p.data.title}</a>
+                {p.data.description && <p class="desc">{p.data.description}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </article>
   </div>
   <script type="application/ld+json" set:html={JSON.stringify(blogPosting)} />
