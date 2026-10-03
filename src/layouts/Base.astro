@@ -68,7 +68,9 @@ const current = Astro.url.pathname;
     <!-- RSS autodiscovery -->
     <link rel="alternate" type="application/rss+xml" title="Asim's Lab — RSS" href="/rss.xml" />
 
-    <!-- Self-hosted fonts: preload the two weights used above the fold -->
+    <!-- Self-hosted fonts: preload the weights used above the fold (latin for the H1, bengali for body) -->
+    <link rel="preload" href="/fonts/hind-siliguri-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/hind-siliguri-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/hind-siliguri-700-bengali.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/hind-siliguri-400-bengali.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>" />
