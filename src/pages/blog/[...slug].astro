@@ -9,12 +9,39 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const slug = post.id.replace(/\.md$/, '');
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const site = 'https://asim-lab.vercel.app';
+const url = `${site}/blog/${slug}`;
+const blogPosting = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  inLanguage: 'bn',
+  url,
+  author: { '@type': 'Person', name: 'Asim Kumar' },
+  publisher: {
+    '@type': 'Organization',
+    name: "Asim's Lab",
+    url: site,
+  },
+  keywords: (post.data.tags ?? []).join(', '),
+};
 ---
 
-<Base title={post.data.title} description={post.data.description ?? post.data.title}>
+<Base
+  title={post.data.title}
+  description={post.data.description ?? post.data.title}
+  type="article"
+  canonicalPath={`/blog/${slug}`}
+  publishedTime={post.data.pubDate.toISOString()}
+  tags={post.data.tags ?? []}
+>
   <div class="wrap">
     <article class="article">
       <h1>{post.data.title}</h1>
@@ -27,4 +54,5 @@ const fmt = (d: Date) =>
       </div>
     </article>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify(blogPosting)} />
 </Base>
