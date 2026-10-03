@@ -1,7 +1,7 @@
 ---
 title: 'Private DNS বদলে ফোনের ইন্টারনেট ফাস্ট ও নিরাপদ করো (Android)'
 description: 'Android-এর Private DNS সেটিং বদলে ব্রাউজিং ফাস্ট করো, বিজ্ঞাপন-ট্র্যাকার ব্লক করো — রুট ছাড়াই, ২ মিনিটে।'
-pubDate: 2026-10-03
+pubDate: 2026-10-03T09:35:00+06:00
 tags: ['dns', 'privacy', 'android', 'tutorial']
 ---
 
