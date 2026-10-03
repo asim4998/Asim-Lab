@@ -1,7 +1,7 @@
 ---
 title: 'Google-এর নতুন নিয়ম: যাচাই ছাড়া APK ইনস্টল বন্ধ — তোমার ফোনে কী বদলাবে'
 description: 'ব্রাজিল, ইন্দোনেশিয়া, সিঙ্গাপুর ও থাইল্যান্ডে চালু হলো Google-এর sideloading verification — GitHub/F-Droid থেকে APK নেওয়া ব্যবহারকারীদের যা জানা দরকার।'
-pubDate: 2026-10-03
+pubDate: 2026-10-03T09:00:00+06:00
 tags: ['sideloading', 'apk', 'adb', 'shizuku', 'news']
 ---
 
