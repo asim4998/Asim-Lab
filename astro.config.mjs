@@ -9,5 +9,6 @@ export default defineConfig({
   integrations: [sitemap()],
   build: {
     format: 'directory',
+    inlineStylesheets: 'always',
   },
 });
