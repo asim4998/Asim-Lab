@@ -21,7 +21,7 @@ tags: ['api', 'debugging', 'gemini', 'tutorial']
 
 সবচেয়ে কমন error। এর মানে সার্ভার তোমার key চিনতে পারেনি।
 
-![401 Unauthorized error — ভুল API key]( /images/api-401-error.webp)
+![401 Unauthorized error — ভুল API key](/images/api-401-error.webp)
 
 **সমাধান:**
 1. key-টা পুরো কপি হয়েছে কিনা দেখো — শুরু বা শেষে space/নতুন লাইন ঢুকে যায় প্রায়ই।
@@ -32,7 +32,7 @@ tags: ['api', 'debugging', 'gemini', 'tutorial']
 
 এর মানে তুমি নির্দিষ্ট সময়ে অনুমতির চেয়ে বেশি request পাঠিয়ে ফেলেছো। ফ্রি প্ল্যানে এটা খুব কমন।
 
-![429 Too Many Requests — rate limit]( /images/api-429-ratelimit.webp)
+![429 Too Many Requests — rate limit](/images/api-429-ratelimit.webp)
 
 **সমাধান:**
 1. **অপেক্ষা করো** — লিমিট সাধারণত মিনিট/ঘণ্টা/দিন পরে রিসেট হয়।
