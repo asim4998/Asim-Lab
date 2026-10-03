@@ -1,7 +1,7 @@
 ---
 title: 'ProxyBrowser: আমার নিজের প্রক্সি ব্রাউজার প্রজেক্ট'
 description: 'দেশ বাছলেই ওই দেশের IP — আমার হাতে বানানো কাস্টম Android ব্রাউজারের গল্প।'
-pubDate: 2026-10-01
+pubDate: 2026-10-01T10:00:00+06:00
 tags: ['proxybrowser', 'project', 'android']
 ---
 
