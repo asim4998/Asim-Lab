@@ -19,14 +19,18 @@ const reading = (body: string) => {
 };
 ---
 
-<Base title="হোম" description="Asim's Lab — বাংলায় Android ফোন ঘাঁটাঘাঁটির নোটবুক">
+<Base
+  title="Asim4998 | বাংলায় Android টিপস ও মোবাইল সমস্যার সমাধান"
+  description="Asim4998-এর Asim's Lab — বাংলায় Android ফোন ঘাঁটাঘাঁটির নোটবুক। Shizuku সেটআপ, Canta দিয়ে ডিব্লোট, Private DNS, API error সমাধানসহ প্রতিদিন নতুন মোবাইল টিপস ও ট্রিকস।"
+>
   <div class="wrap">
     <section class="hero">
-      <p class="kicker">$ whoami<span class="cursor"></span></p>
+      <p class="kicker">asim4998@lab:~$<span class="cursor"></span></p>
       <h1>Asim's Lab 🧪</h1>
       <p class="tagline">
-        ফোন ঘাঁটাঘাঁটির নোটবুক — Shizuku, ডিব্লোটিং, প্রক্সি আর
-        Android টিংকারিং নিয়ে হাতেকলমে শেখা সবকিছু, বাংলায়।
+        বাংলায় Android মোবাইল টিপস ও সমস্যা-সমাধানের নোটবুক —
+        Shizuku সেটআপ, Canta দিয়ে ডিব্লোটিং, Private DNS, API error ফিক্স
+        আর ফোন ঘাঁটাঘাঁটির হাতেকলমে গাইড।
       </p>
       <div class="hero-stats">
         <div class="stat"><b>{posts.length}</b><span>পোস্ট</span></div>
@@ -36,6 +40,15 @@ const reading = (body: string) => {
       <a class="btn" href="/blog">পোস্ট পড়ো</a>
       <a class="btn ghost" href="/search">🔍 সার্চ করো</a>
     </section>
+
+    <h2 class="section-title">জনপ্রিয় টপিক</h2>
+    <div class="tag-cloud">
+      {['shizuku', 'android', 'debloat', 'dns', 'api', 'tutorial', 'privacy', 'fix']
+        .filter((t) => posts.some((p) => (p.data.tags ?? []).includes(t)))
+        .map((t) => (
+          <a href={`/tags/${t}`}>#{t}</a>
+        ))}
+    </div>
 
     <h2 class="section-title">সাম্প্রতিক পোস্ট</h2>
     <ul class="post-list">
@@ -55,11 +68,36 @@ const reading = (body: string) => {
     <section class="about-teaser reveal">
       <h2>এই ল্যাবটা কী? 🔬</h2>
       <p>
-        PC ছাড়া শুধু ফোন দিয়েই আমি Android-এর গভীরে ঢুকি — সিস্টেম ডিবাগিং,
-        অপ্রয়োজনীয় অ্যাপ ছাঁটাই, নিজের ব্রাউজার বানানো। যা শিখি, এখানে
-        নোট করে রাখি, যাতে তুমিও পারো।
+        আমি <strong>Asim4998</strong> — PC ছাড়া শুধু ফোন দিয়েই Android-এর
+        গভীরে ঢুকি: সিস্টেম ডিবাগিং, অপ্রয়োজনীয় অ্যাপ ছাঁটাই, নিজের ব্রাউজার
+        বানানো। বাংলায় লেখা প্রতিটা গাইড ধাপে ধাপে, যাতে তুমিও নিজের ফোনে
+        করতে পারো — রুট ছাড়াই।
       </p>
       <a class="btn ghost" href="/about" style="margin-left:0">আরও জানো</a>
     </section>
+
+    <section class="reveal" style="margin-top:2.5rem">
+      <h2 class="section-title">সাধারণ প্রশ্ন</h2>
+      <div class="prose">
+        <h3>Asim's Lab কী নিয়ে?</h3>
+        <p>বাংলায় Android মোবাইল টিপস, Shizuku/ADB গাইড, ডিব্লোটিং, Private DNS আর কমন ফোন সমস্যার সমাধান — সব হাতেকলমে।</p>
+        <h3>পোস্টগুলো কি ফ্রি?</h3>
+        <p>হ্যাঁ, সম্পূর্ণ ফ্রি। প্রতিদিন নতুন পোস্ট আসে।</p>
+        <h3>রুট ছাড়া কি টিপসগুলো কাজ করবে?</h3>
+        <p>বেশিরভাগ গাইড রুট ছাড়াই কাজ করে — Shizuku আর wireless debugging দিয়েই অনেক কিছু করা যায়।</p>
+      </div>
+    </section>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: "Asim's Lab কী নিয়ে?",
+        acceptedAnswer: { '@type': 'Answer', text: 'বাংলায় Android মোবাইল টিপস, Shizuku/ADB গাইড, ডিব্লোটিং, Private DNS আর কমন ফোন সমস্যার সমাধান।' } },
+      { '@type': 'Question', name: 'পোস্টগুলো কি ফ্রি?',
+        acceptedAnswer: { '@type': 'Answer', text: 'হ্যাঁ, সম্পূর্ণ ফ্রি। প্রতিদিন নতুন পোস্ট আসে।' } },
+      { '@type': 'Question', name: 'রুট ছাড়া কি টিপসগুলো কাজ করবে?',
+        acceptedAnswer: { '@type': 'Answer', text: 'বেশিরভাগ গাইড রুট ছাড়াই কাজ করে — Shizuku আর wireless debugging দিয়েই অনেক কিছু করা যায়।' } },
+    ],
+  })} />
 </Base>
