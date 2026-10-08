@@ -1,6 +1,6 @@
 ---
 title: 'স্ক্রিনশট নেওয়া যাচ্ছে না? কারণ ও সম্পূর্ণ সমাধান'
-description: 'Android ফোনে Can't take screenshot এরর আসলে কী করবেন — স্টোরেজ, সিকিউরিটি পলিসি আর বিকল্প স্ক্রিনশট পদ্ধতিসহ ধাপে ধাপে সম্পূর্ণ গাইড।'
+description: "Android ফোনে Can't take screenshot এরর আসলে কী করবেন — স্টোরেজ, সিকিউরিটি পলিসি আর বিকল্প স্ক্রিনশট পদ্ধতিসহ ধাপে ধাপে সম্পূর্ণ গাইড।"
 pubDate: 2026-10-08T13:25:00+06:00
 tags: ['android', 'fix', 'screenshot']
 image: /images/screenshot-not-working-fix-bangla-thumb.webp
