@@ -1,6 +1,6 @@
 ---
 title: 'ফোনে ক্যামেরা ওপেন হচ্ছে না? Camera Failed এরর ঠিক করার সম্পূর্ণ উপায়'
-description: 'Camera failed বা Can't connect to the camera এরর আসলে ঘাবড়াবেন না — ক্যাশ ক্লিয়ার, পারমিশন চেক, Safe mode টেস্ট থেকে ফ্যাক্টরি রিসেট পর্যন্ত ধাপে ধাপে সম্পূর্ণ সমাধান।'
+description: "Camera failed বা Can't connect to the camera এরর আসলে ঘাবড়াবেন না — ক্যাশ ক্লিয়ার, পারমিশন চেক, Safe mode টেস্ট থেকে ফ্যাক্টরি রিসেট পর্যন্ত ধাপে ধাপে সম্পূর্ণ সমাধান।"
 pubDate: 2026-10-11T09:48:00+06:00
 tags: ['android', 'fix', 'camera']
 image: /images/camera-not-opening-fix-bangla-thumb.webp
